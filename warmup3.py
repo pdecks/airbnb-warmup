@@ -1,4 +1,5 @@
-"""Write a function to print out a matrix (n x m) in spiral order."""
+"""Spiral Matrix"""
+# Write a function to print out a matrix (n x m) in spiral order.
 
 def spiral_print(matrix):
     """Takes a matrix as a list of lists of size n x m, prints values in CW
