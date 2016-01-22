@@ -53,15 +53,19 @@ def available_path(start, end, matrix):
             temp[0] = row
             temp[1] = col
             total -= free_path(start, temp) * available_path(temp, end, matrix)
-
+            # !!! Hitting max recursive depth because temp always resets to 0,0
     return total
 
 
 def initialize_matrix(m, n):
     """Initialize mxn matrix with all FREE cells."""
-    matrix_row = [FREE] * n
-    matrix = [matrix_row] * m
-    
+    matrix = []
+    for i in range(m):
+        curr_row = []
+        for j in range(n):
+            curr_row.append(0)
+        matrix.append(curr_row)
+
     return matrix
 
 
@@ -73,8 +77,8 @@ def block_entry(r, c, matrix):
 
 
 def main():
-    m = 5
-    n = 4
+    m = 2
+    n = 2
 
     # create an MxN matrix
     matrix = initialize_matrix(m, n)   
@@ -84,8 +88,8 @@ def main():
     end = [m - 1, n - 1]
     
     # block a set of entries
-    matrix = block_entry(1, 1)
-    matrix = block_entry(2, 1)
+    # matrix = block_entry(1, 1, matrix)
+    # matrix = block_entry(2, 1, matrix)
 
     print available_path(start, end, matrix)
     
